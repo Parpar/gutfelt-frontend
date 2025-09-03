@@ -1,0 +1,83 @@
+:root {
+    --primary-blue: #004c8c; --secondary-blue: #607d8b; --background-light: #f4f4f4; --text-dark: #333; --text-light: #fff; --border-color: #ddd; --font-header: 'Montserrat', sans-serif; --font-body: 'Lato', sans-serif;
+}
+body { margin: 0; font-family: var(--font-body); background-color: var(--background-light); color: var(--text-dark); }
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.app-header { background-color: var(--primary-blue); color: var(--text-light); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.header-logo { font-family: var(--font-header); font-size: 1.5rem; }
+.header-nav a { color: var(--text-light); text-decoration: none; margin-left: 1.5rem; font-weight: 700; font-size: 0.9rem; transition: opacity 0.2s; }
+.header-nav a:hover { opacity: 0.8; }
+.dashboard { padding: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+.widget { background-color: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 1.5rem; display: flex; flex-direction: column; }
+.widget h2 { font-family: var(--font-header); color: var(--primary-blue); margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+.news-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--background-light); }
+.news-item:last-child { border-bottom: none; margin-bottom: 0; }
+.news-item h3 { margin: 0 0 0.25rem 0; }
+.news-item p { margin: 0; font-size: 0.9rem; color: #666; }
+.search-widget input { width: 100%; padding: 0.75rem; font-size: 1rem; border: 1px solid var(--border-color); border-radius: 4px; }
+.calendar-event { display: flex; align-items: center; margin-bottom: 0.75rem; }
+.calendar-date { background-color: var(--background-light); color: var(--primary-blue); font-weight: 700; text-align: center; padding: 0.5rem; border-radius: 4px; margin-right: 1rem; }
+.calendar-date span { display: block; font-size: 0.8rem; }
+@media (max-width: 768px) {
+    .app-header { flex-direction: column; padding: 1rem; }
+    .header-nav { margin-top: 1rem; }
+    .header-nav a { margin: 0 0.75rem; }
+    .dashboard { padding: 1rem; gap: 1rem; }
+}
+/* --- Styling til Firma-politik Siden --- */
+
+.policy-hub-container {
+    padding: 2rem;
+}
+
+.policy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.policy-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none; /* Fjerner understregning fra link */
+    color: var(--text-dark);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.policy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.policy-card .icon {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.policy-card h3 {
+    font-family: var(--font-header);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.policy-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}

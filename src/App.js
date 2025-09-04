@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react'; // Importer useEffect
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import { UserProvider, UserContext } from './UserContext';
@@ -14,6 +14,7 @@ import PersonalePage from './pages/personale.js';
 import FaktureringPage from './pages/fakturering.js';
 import KundehåndteringPage from './pages/kundehåndtering.js';
 
+// ProtectedRoute er uændret
 function ProtectedRoute({ children }) {
   const { currentUser } = useContext(UserContext);
   if (!currentUser) {
@@ -23,7 +24,29 @@ function ProtectedRoute({ children }) {
 }
 
 function AppContent() {
-  const { currentUser } = useContext(UserContext);
+  // Hent login-funktionen og den nuværende bruger fra vores Context
+  const { currentUser, login } = useContext(UserContext);
+
+  // --- DEN NYE KODEBLOK ---
+  // useEffect kører én gang, lige når AppContent bliver vist første gang.
+  useEffect(() => {
+    // Hvis der IKKE er en bruger logget ind...
+    if (!currentUser) {
+      // Definer en "falsk" bruger, vi automatisk vil logge ind som.
+      const autoLoginUser = { 
+        name: 'Susanne Nielsen', 
+        role: 'HR-redaktør' 
+      };
+      // Kald login-funktionen med den falske bruger.
+      login(autoLoginUser);
+    }
+  }, [currentUser, login]); // Disse afhængigheder sikrer, at koden kun kører, når det er nødvendigt
+  // --------------------------
+
+  // Vent med at vise noget, indtil auto-login er sket.
+  if (!currentUser) {
+    return <div>Logger ind...</div>; // Viser en midlertidig load-besked
+  }
 
   return (
     <Router>
@@ -31,20 +54,18 @@ function AppContent() {
         <Header />
         <main>
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
+            {/* Vi fjerner midlertidigt login-siden fra ruterne */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/standarder" element={<DocumentsPage />} />
+            <Route path="/firmapolitikker" element={<PolicyPage />} />
+            <Route path="/medarbejdere" element={<EmployeesPage />} />
+            <Route path="/samarbejdspartnere" element={<PartnersPage />} />
+            <Route path="/firmapolitikker/personale" element={<PersonalePage />} />
+            <Route path="/firmapolitikker/fakturering" element={<FaktureringPage />} />
+            <Route path="/firmapolitikker/kundehåndtering" element={<KundehåndteringPage />} />
             
-            <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
-            {/* RETTET HER: */}
-            <Route path="/standarder" element={<ProtectedRoute><DocumentsPage /></ProtectedRoute>} />
-            <Route path="/firmapolitikker" element={<ProtectedRoute><PolicyPage /></ProtectedRoute>} />
-            <Route path="/medarbejdere" element={<ProtectedRoute><EmployeesPage /></ProtectedRoute>} />
-            <Route path="/samarbejdspartnere" element={<ProtectedRoute><PartnersPage /></ProtectedRoute>} />
-
-            <Route path="/firmapolitikker/personale" element={<ProtectedRoute><PersonalePage /></ProtectedRoute>} />
-            <Route path="/firmapolitikker/fakturering" element={<ProtectedRoute><FaktureringPage /></ProtectedRoute>} />
-            <Route path="/firmapolitikker/kundehåndtering" element={<ProtectedRoute><KundehåndteringPage /></ProtectedRoute>} />
-
-            <Route path="*" element={currentUser ? <Navigate to="/" /> : <Navigate to="/login" />} />
+            {/* Omdirigerer alle ukendte stier til forsiden */}
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
       </div>
@@ -52,6 +73,7 @@ function AppContent() {
   );
 }
 
+// Hoved-appen er uændret
 function App() {
   return (
     <UserProvider>

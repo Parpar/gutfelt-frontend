@@ -10,9 +10,32 @@ import DocumentsPage from './pages/documentspage.js';
 import PolicyPage from './pages/policypage.js';
 import EmployeesPage from './pages/employeespage.js';
 import PartnersPage from './pages/partnerspage.js';
-import PersonalePage from './pages/personale.js';
+
 import FaktureringPage from './pages/fakturering.js';
+import KickoffPage from './pages/kickoff.js';
 import KundehåndteringPage from './pages/kundehåndtering.js';
+import KvalitetsstyringPage from './pages/kvalitetsstyring.js';
+import MandagsmøderPage from './pages/mandagsmøder.js';
+import PersonalehåndbogPage from './pages/personalehåndbog.js';
+import PersondatapolitikPage from './pages/persondatapolitik.js';
+import SlettepolitikPage from './pages/slettepolitik.js';
+import WhistleblowerPage from './pages/whistleblower.js';
+
+import AftalebrevePage from './pages/aftalebreve.js';
+import EngagementPage from './pages/engagement.js';
+import HabilitetPage from './pages/habilitet.js';
+import ProtokollatPage from './pages/protokollat.js';
+import TjeklisterPage from './pages/tjeklister.js';
+import OevrigePage from './pages/oevrige.js';
+
+import FjernlagerPage from './pages/fjernlager.js';
+import KompetenceskemaPage from './pages/kompetenceskema.js';
+import KursusmaterialerPage from './pages/kursusmaterialer.js';
+import PlanlægningPage from './pages/planlægning.js';
+
+import BygningPage from './pages/bygning.js';
+import RådgiverePage from './pages/rådgivere.js';
+import SystemerPage from './pages/systemer.js';
 
 function AppContent() {
   const { currentUser } = useContext(UserContext);
@@ -23,27 +46,45 @@ function AppContent() {
         <Header />
         <main>
           <Routes>
-            {/* Hvis ingen er logget ind, peger ALLE stier til login-siden */}
-            {!currentUser && (
+            {!currentUser ? (
               <>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="*" element={<Navigate to="/login" replace />} />
               </>
-            )}
-
-            {/* Hvis en bruger ER logget ind, er disse stier tilgængelige */}
-            {currentUser && (
+            ) : (
               <>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/standarder" element={<DocumentsPage />} />
                 <Route path="/firmapolitikker" element={<PolicyPage />} />
                 <Route path="/medarbejdere" element={<EmployeesPage />} />
                 <Route path="/samarbejdspartnere" element={<PartnersPage />} />
-                <Route path="/firmapolitikker/personale" element={<PersonalePage />} />
-                <Route path="/firmapolitikker/fakturering" element={<FaktureringPage />} />
-                <Route path="/firmapolitikker/kundehåndtering" element={<KundehåndteringPage />} />
                 
-                {/* Hvis en logget-ind bruger går til en ukendt side, send dem til forsiden */}
+                <Route path="/firmapolitikker/fakturering" element={<FaktureringPage />} />
+                <Route path="/firmapolitikker/kickoff" element={<KickoffPage />} />
+                <Route path="/firmapolitikker/kundehåndtering" element={<KundehåndteringPage />} />
+                <Route path="/firmapolitikker/kvalitetsstyring" element={<KvalitetsstyringPage />} />
+                <Route path="/firmapolitikker/mandagsmøder" element={<MandagsmøderPage />} />
+                <Route path="/firmapolitikker/personalehåndbog" element={<PersonalehåndbogPage />} />
+                <Route path="/firmapolitikker/persondatapolitik" element={<PersondatapolitikPage />} />
+                <Route path="/firmapolitikker/slettepolitik" element={<SlettepolitikPage />} />
+                <Route path="/firmapolitikker/whistleblower" element={<WhistleblowerPage />} />
+                
+                <Route path="/standarder/aftalebreve" element={<AftalebrevePage />} />
+                <Route path="/standarder/engagement" element={<EngagementPage />} />
+                <Route path="/standarder/habilitet" element={<HabilitetPage />} />
+                <Route path="/standarder/protokollat" element={<ProtokollatPage />} />
+                <Route path="/standarder/tjeklister" element={<TjeklisterPage />} />
+                <Route path="/standarder/oevrige" element={<OevrigePage />} />
+
+                <Route path="/medarbejdere/fjernlager" element={<FjernlagerPage />} />
+                <Route path="/medarbejdere/kompetenceskema" element={<KompetenceskemaPage />} />
+                <Route path="/medarbejdere/kursusmaterialer" element={<KursusmaterialerPage />} />
+                <Route path="/medarbejdere/planlægning" element={<PlanlægningPage />} />
+
+                <Route path="/samarbejdspartnere/bygning" element={<BygningPage />} />
+                <Route path="/samarbejdspartnere/rådgivere" element={<RådgiverePage />} />
+                <Route path="/samarbejdspartnere/systemer" element={<SystemerPage />} />
+
                 <Route path="*" element={<Navigate to="/" replace />} />
               </>
             )}
@@ -54,7 +95,6 @@ function AppContent() {
   );
 }
 
-// Hoved-appen er uændret
 function App() {
   return (
     <UserProvider>

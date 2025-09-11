@@ -39,7 +39,6 @@ import SystemerPage from './pages/systemer.js';
 
 function AppContent() {
   const { currentUser } = useContext(UserContext);
-
   return (
     <Router>
       <div className="app">
@@ -102,5 +101,4 @@ function App() {
     </UserProvider>
   );
 }
-
 export default App;

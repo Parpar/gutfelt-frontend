@@ -9,7 +9,7 @@ function PolicyPage() {
         <p>Vælg en kategori nedenfor for at læse de specifikke retningslinjer og politikker.</p>
       </div>
       <div className="policy-grid">
-        <Link to="/firmapolitikker/fakturering" className="policy-card"><div className="icon"><i className="fas fa-file-invoice-dollar"></i></div><h3>Fakturering</h3></p></Link>
+        <Link to="/firmapolitikker/fakturering" className="policy-card"><div className="icon"><i className="fas fa-file-invoice-dollar"></i></div><h3>Fakturering</h3></Link>
         <Link to="/firmapolitikker/kickoff" className="policy-card"><div className="icon"><i className="fas fa-rocket"></i></div><h3>Kickoff møder</h3></Link>
         <Link to="/firmapolitikker/kundehåndtering" className="policy-card"><div className="icon"><i className="fas fa-headset"></i></div><h3>Kundehåndtering</h3></Link>
         <Link to="/firmapolitikker/kvalitetsstyring" className="policy-card"><div className="icon"><i className="fas fa-check-double"></i></div><h3>Kvalitetsstyringsmanuel</h3></Link>

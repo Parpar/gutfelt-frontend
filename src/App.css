@@ -1,30 +1,129 @@
 :root {
-    --primary-blue: #004c8c; --secondary-blue: #607d8b; --background-light: #f4f4f4; --text-dark: #333; --text-light: #fff; --border-color: #ddd; --font-header: 'Montserrat', sans-serif; --font-body: 'Lato', sans-serif;
+    --primary-blue: #004c8c;
+    --secondary-blue: #607d8b;
+    --background-light: #f4f4f4;
+    --text-dark: #333;
+    --text-light: #fff;
+    --border-color: #ddd;
+    --font-header: 'Montserrat', sans-serif;
+    --font-body: 'Lato', sans-serif;
 }
-body { margin: 0; font-family: var(--font-body); background-color: var(--background-light); color: var(--text-dark); }
-.app { display: flex; flex-direction: column; min-height: 100vh; }
-.app-header { background-color: var(--primary-blue); color: var(--text-light); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.header-logo { font-family: var(--font-header); font-size: 1.5rem; }
-.header-nav a { color: var(--text-light); text-decoration: none; margin-left: 1.5rem; font-weight: 700; font-size: 0.9rem; transition: opacity 0.2s; }
-.header-nav a:hover { opacity: 0.8; }
-.dashboard { padding: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-.widget { background-color: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 1.5rem; display: flex; flex-direction: column; }
-.widget h2 { font-family: var(--font-header); color: var(--primary-blue); margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem; }
-.news-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--background-light); }
-.news-item:last-child { border-bottom: none; margin-bottom: 0; }
-.news-item h3 { margin: 0 0 0.25rem 0; }
-.news-item p { margin: 0; font-size: 0.9rem; color: #666; }
-.search-widget input { width: 100%; padding: 0.75rem; font-size: 1rem; border: 1px solid var(--border-color); border-radius: 4px; }
-.calendar-event { display: flex; align-items: center; margin-bottom: 0.75rem; }
-.calendar-date { background-color: var(--background-light); color: var(--primary-blue); font-weight: 700; text-align: center; padding: 0.5rem; border-radius: 4px; margin-right: 1rem; }
-.calendar-date span { display: block; font-size: 0.8rem; }
-@media (max-width: 768px) {
-    .app-header { flex-direction: column; padding: 1rem; }
-    .header-nav { margin-top: 1rem; }
-    .header-nav a { margin: 0 0.75rem; }
-    .dashboard { padding: 1rem; gap: 1rem; }
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--background-light);
+    color: var(--text-dark);
 }
-/* --- Styling til Firma-politik Siden --- */
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-header {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-logo {
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+}
+
+.header-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+}
+
+.header-nav a:hover {
+    opacity: 0.8;
+}
+
+.dashboard {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.widget {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.widget h2 {
+    font-family: var(--font-header);
+    color: var(--primary-blue);
+    margin-top: 0;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.news-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--background-light);
+}
+
+.news-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.news-item h3 {
+    margin: 0 0 0.25rem 0;
+}
+
+.news-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.search-widget input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.calendar-event {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.calendar-date {
+    background-color: var(--background-light);
+    color: var(--primary-blue);
+    font-weight: 700;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-right: 1rem;
+}
+
+.calendar-date span {
+    display: block;
+    font-size: 0.8rem;
+}
 
 .policy-hub-container {
     padding: 2rem;
@@ -42,7 +141,7 @@ body { margin: 0; font-family: var(--font-body); background-color: var(--backgro
     box-shadow: 0 2px 5px rgba(0,0,0,0.07);
     padding: 2rem;
     text-align: center;
-    text-decoration: none; /* Fjerner understregning fra link */
+    text-decoration: none;
     color: var(--text-dark);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -80,4 +179,95 @@ body { margin: 0; font-family: var(--font-body); background-color: var(--backgro
 
 .back-link:hover {
   text-decoration: underline;
+}
+
+.upload-section {
+    border-top: 2px solid var(--background-light);
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.upload-section h3 {
+    margin-top: 0;
+}
+
+.upload-section input[type="file"] {
+    margin-bottom: 1rem;
+}
+
+.document-download {
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .app-header { flex-direction: column; padding: 1rem; }
+    .header-nav { margin-top: 1rem; }
+    .header-nav a { margin: 0 0.75rem; }
+    .dashboard { padding: 1rem; gap: 1rem; }
+    .policy-hub-container { padding: 1rem; }
+}
+
+/* --- Nyt Stilrent Tabel-design til Dokumenter --- */
+
+.document-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.document-table th,
+.document-table td {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.document-table thead th {
+  font-family: var(--font-header);
+  color: var(--secondary-blue);
+  background-color: var(--background-light);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.document-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.document-table .file-name-cell {
+  display: flex;
+  align-items: center;
+}
+
+.document-table .file-icon {
+  font-size: 1.2rem;
+  color: var(--primary-blue);
+  margin-right: 15px;
+}
+
+.document-table .download-cell {
+  text-align: right;
+}
+
+.document-table .download-link {
+  padding: 6px 12px;
+  background-color: var(--primary-blue);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.document-table .download-link:hover {
+  background-color: #003a6c;
 }

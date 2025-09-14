@@ -49,7 +49,7 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
       const result = await response.json();
       setMessage('Filen blev uploadet!');
       const newDocument = { id: Date.now(), name: result.file.name, path: result.file.path, size: result.file.size };
-      setDocuments(prev => [...prev, newDocument]);
+      setDocuments(prev => [newDocument, ...prev]);
       setSelectedFile(null);
     } catch (err) {
       setError(err.message);
@@ -63,16 +63,33 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
       
       {isLoading && <p>Henter dokumenter fra SharePoint, vent venligst...</p>}
       
-      <ul className="document-list">
-        {!isLoading && documents.map(doc => (
-          <li key={doc.id} className="document-item">
-            <div className="document-icon"><i className={`fas ${iconClass || 'fa-file-alt'}`}></i></div>
-            <div className="document-info"><h4>{doc.name}</h4></div>
-            <a href={doc.path} target="_blank" rel="noopener noreferrer" className="document-download">Download</a>
-          </li>
-        ))}
-        {!isLoading && documents.length === 0 && <p>Der er endnu ingen dokumenter i denne kategori.</p>}
-      </ul>
+      {!isLoading && documents.length > 0 && (
+        <table className="document-table">
+          <thead>
+            <tr>
+              <th>Filnavn</th>
+              <th>Størrelse</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {documents.map(doc => (
+              <tr key={doc.id}>
+                <td className="file-name-cell">
+                  <div className="file-icon"><i className={`fas ${iconClass || 'fa-file-alt'}`}></i></div>
+                  <span>{doc.name}</span>
+                </td>
+                <td>{doc.size ? `${(doc.size / 1024).toFixed(1)} KB` : 'N/A'}</td>
+                <td className="download-cell">
+                  <a href={doc.path} target="_blank" rel="noopener noreferrer" className="download-link">Download</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      
+      {!isLoading && documents.length === 0 && <p style={{ marginTop: '2rem' }}>Der er endnu ingen dokumenter i denne kategori.</p>}
 
       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
 
@@ -90,4 +107,4 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
   );
 }
 
-export default UploadPage;
+export default UploadPage;```

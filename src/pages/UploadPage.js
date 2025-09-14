@@ -8,9 +8,27 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
   const { currentUser } = useContext(UserContext);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fremtidig funktion til at hente filer
+    const fetchDocuments = async () => {
+      setIsLoading(true);
+      setError('');
+      try {
+        const response = await fetch(`https://gutfelt-backend.onrender.com/api/documents/${category}`);
+        if (!response.ok) {
+          throw new Error('Kunne ikke hente dokumenter.');
+        }
+        const data = await response.json();
+        setDocuments(data);
+      } catch (err) {
+        console.error("Failed to fetch documents:", err);
+        setError('Kunne ikke hente eksisterende dokumenter fra serveren.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchDocuments();
   }, [category]);
 
   const handleFileChange = (event) => setSelectedFile(event.target.files[0]);
@@ -44,18 +62,19 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
     <div className="widget" style={{ margin: '2rem' }}>
       <h2>{pageTitle}</h2>
       
+      {isLoading && <p>Henter dokumenter fra SharePoint, vent venligst...</p>}
+      
       <ul className="document-list">
-        {documents.map(doc => (
+        {!isLoading && documents.map(doc => (
           <li key={doc.id} className="document-item">
             <div className="document-icon"><i className={`fas ${iconClass || 'fa-file-alt'}`}></i></div>
-            <div className="document-info"><h4>{doc.name}</h4><p>Uploadet for nylig - {doc.size ? `${(doc.size / 1024).toFixed(1)} KB` : ''}</p></div>
+            <div className="document-info"><h4>{doc.name}</h4><p>{doc.size ? `${(doc.size / 1024).toFixed(1)} KB` : ''}</p></div>
             <a href={doc.path} target="_blank" rel="noopener noreferrer" className="document-download">Download</a>
           </li>
         ))}
-        {documents.length === 0 && <p>Der er endnu ingen dokumenter i denne kategori.</p>}
+        {!isLoading && documents.length === 0 && <p>Der er endnu ingen dokumenter i denne kategori.</p>}
       </ul>
 
-      {/* DENNE BLOK ER NU KORREKT OG STANDARDISERET FOR ALLE SIDER */}
       {currentUser && (currentUser.role === 'HR-redaktør' || currentUser.role === 'Redaktør' || currentUser.role === 'Admin') && (
         <div className="upload-section">
           <h3>Upload et nyt dokument</h3>

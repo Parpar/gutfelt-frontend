@@ -14,22 +14,41 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
     const fetchDocuments = async () => {
       setIsLoading(true);
       setError('');
+
+      // Tjek om category er defineret, før vi kalder
+      if (!category) {
+        console.error("Fejl: 'category' er ikke defineret. Kan ikke hente dokumenter.");
+        setError("Der er opstået en konfigurationsfejl på denne side.");
+        setIsLoading(false);
+        return;
+      }
+
+      const apiUrl = `https://gutfelt-backend.onrender.com/api/documents/${category}`;
+      console.log("Forsøger at hente dokumenter fra:", apiUrl); // Ny debugging-linje
+
       try {
-        const response = await fetch(`https://gutfelt-backend.onrender.com/api/documents/${category}`);
+        const response = await fetch(apiUrl);
+        
         if (!response.ok) {
-          throw new Error('Kunne ikke hente dokumenter.');
+          const errorText = await response.text();
+          console.error("Fejl fra server:", response.status, errorText);
+          throw new Error(`Kunne ikke hente dokumenter. Server svarede med status: ${response.status}`);
         }
+
         const data = await response.json();
         setDocuments(data);
+
       } catch (err) {
-        console.error("Failed to fetch documents:", err);
-        setError('Kunne ikke hente eksisterende dokumenter fra serveren.');
+        console.error("Netværksfejl eller parsing-fejl:", err);
+        setError(err.message || 'Kunne ikke hente eksisterende dokumenter fra serveren.');
       } finally {
         setIsLoading(false);
       }
     };
+
     fetchDocuments();
   }, [category]);
+
 
   const handleFileChange = (event) => setSelectedFile(event.target.files[0]);
   
@@ -75,12 +94,14 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
         {!isLoading && documents.length === 0 && <p>Der er endnu ingen dokumenter i denne kategori.</p>}
       </ul>
 
+      {/* Viser den generelle fejlmeddelelse her */}
+      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+
       {currentUser && (currentUser.role === 'HR-redaktør' || currentUser.role === 'Redaktør' || currentUser.role === 'Admin') && (
         <div className="upload-section">
           <h3>Upload et nyt dokument</h3>
           <input type="file" key={selectedFile || ''} onChange={handleFileChange} />
           <button onClick={handleUpload} className="document-download">Upload Fil</button>
-          {error && <p style={{color: 'red'}}>{error}</p>}
           {message && <p style={{color: 'green'}}>{message}</p>}
         </div>
       )}

@@ -30,7 +30,7 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
     fetchDocuments();
   }, [category]);
 
-  const handleFileChange = (event) => setSelectedFile(event.target.files[0]);
+  const handleFileChange = (event) => setSelectedFile(event.target.files);
   
   const handleUpload = async () => {
     if (!selectedFile) return alert('Vælg venligst en fil først.');
@@ -107,4 +107,4 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
   );
 }
 
-export default UploadPage;```
+export default UploadPage;

@@ -67,7 +67,7 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
         {!isLoading && documents.map(doc => (
           <li key={doc.id} className="document-item">
             <div className="document-icon"><i className={`fas ${iconClass || 'fa-file-alt'}`}></i></div>
-            <div className="document-info"><h4>{doc.name}</h4><p>{doc.size ? `${(doc.size / 1024).toFixed(1)} KB` : ''}</p></div>
+            <div className="document-info"><h4>{doc.name}</h4></div>
             <a href={doc.path} target="_blank" rel="noopener noreferrer" className="document-download">Download</a>
           </li>
         ))}

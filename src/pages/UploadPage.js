@@ -55,7 +55,8 @@ function UploadPage({ pageTitle, backLink, backLinkText, category, iconClass }) 
         {documents.length === 0 && <p>Der er endnu ingen dokumenter i denne kategori.</p>}
       </ul>
 
-      {currentUser && (currentUser.role === 'HR-redaktør' || currentUser.role === 'Redaktør') && (
+      {/* DENNE BLOK ER NU KORREKT OG STANDARDISERET FOR ALLE SIDER */}
+      {currentUser && (currentUser.role === 'HR-redaktør' || currentUser.role === 'Redaktør' || currentUser.role === 'Admin') && (
         <div className="upload-section">
           <h3>Upload et nyt dokument</h3>
           <input type="file" key={selectedFile || ''} onChange={handleFileChange} />

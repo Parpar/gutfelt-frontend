@@ -24,55 +24,30 @@ function SearchResultsPage() {
       fetchResults();
     }
   }, [query]);
-
-  // Funktion til at vælge det rigtige ikon baseret på resultat-type
-  const getIcon = (type) => {
-    switch (type) {
-      case 'Nyhed': return 'fa-newspaper';
-      case 'Dokument': return 'fa-file-alt';
-      default: return 'fa-question-circle';
-    }
-  };
+  
+  const getIcon = (type) => (type === 'Dokument' ? 'fa-file-alt' : 'fa-newspaper');
 
   return (
     <div className="widget" style={{ margin: '2rem' }}>
       <h2>Søgeresultater for "{query}"</h2>
-      {isLoading ? (
-        <p>Søger...</p>
-      ) : (
-        results.length > 0 ? (
+      {isLoading ? ( <p>Søger i dokumentarkivet...</p> ) : 
+      ( results.length > 0 ? (
           <table className="document-table">
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>Titel</th>
-                <th>Beskrivelse</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Type</th><th>Titel</th><th>Beskrivelse</th></tr></thead>
             <tbody>
               {results.map((result, index) => (
                 <tr key={index}>
-                  <td className="file-name-cell">
-                    <div className="file-icon"><i className={`fas ${getIcon(result.type)}`}></i></div>
-                    <span>{result.type}</span>
-                  </td>
-                  <td>
-                    <a href={result.link} target="_blank" rel="noopener noreferrer">
-                      {result.title}
-                    </a>
-                  </td>
+                  <td className="file-name-cell"><div className="file-icon"><i className={`fas ${getIcon(result.type)}`}></i></div><span>{result.type}</span></td>
+                  <td><a href={result.link} target="_blank" rel="noopener noreferrer">{result.title}</a></td>
                   <td>{result.description}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        ) : (
-          <p>Ingen resultater fundet.</p>
-        )
+        ) : ( <p>Ingen dokumenter matchede din søgning.</p> )
       )}
       <Link to="/" className="back-link" style={{marginTop: '2rem'}}>← Tilbage til forsiden</Link>
     </div>
   );
 }
-
 export default SearchResultsPage;

@@ -91,8 +91,13 @@ body {
     padding: 2rem;
     display: flex;
     flex-direction: column;
+}
+
+.news-widget-container .widget,
+.calendar-widget-container .widget {
     height: 450px;
 }
+
 .widget-content {
     overflow-y: auto;
     flex-grow: 1;

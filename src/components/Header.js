@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
-import logo from '../logo.png';
 
 function Header() {
   const { currentUser, logout } = useContext(UserContext);
@@ -16,7 +15,7 @@ function Header() {
     <header className="app-header">
       <div className="header-logo">
         <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={logo} alt="Gutfelt Intranet Logo" style={{ height: '40px', marginRight: '15px' }} />
+          <img src="/logo.png" alt="Gutfelt Intranet Logo" style={{ height: '40px' }} />
         </Link>
       </div>
       

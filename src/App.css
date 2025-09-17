@@ -1,12 +1,14 @@
 :root {
     --primary-blue: #004c8c;
     --secondary-blue: #607d8b;
-    --background-light: #f4f4f4;
-    --text-dark: #333;
+    --background-light: #f8f9fa;
+    --text-dark: #212529;
     --text-light: #fff;
-    --border-color: #ddd;
+    --border-color: #dee2e6;
     --font-header: 'Montserrat', sans-serif;
     --font-body: 'Lato', sans-serif;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -14,6 +16,8 @@ body {
     font-family: var(--font-body);
     background-color: var(--background-light);
     color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .app {
@@ -23,45 +27,65 @@ body {
 }
 
 .app-header {
-    background-color: var(--primary-blue);
-    color: var(--text-light);
-    padding: 1rem 2rem;
+    background-color: #ffffff;
+    color: var(--text-dark);
+    padding: 0.75rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
 }
 
 .header-logo {
     font-family: var(--font-header);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--primary-blue);
+    font-weight: 700;
 }
 
 .header-nav a {
-    color: var(--text-light);
+    color: var(--secondary-blue);
     text-decoration: none;
-    margin-left: 1.5rem;
+    margin-left: 2rem;
     font-weight: 700;
-    font-size: 0.9rem;
-    transition: opacity 0.2s;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    position: relative;
+    padding-bottom: 5px;
 }
 
 .header-nav a:hover {
-    opacity: 0.8;
+    color: var(--primary-blue);
+}
+
+.header-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-blue);
+    transition: width 0.3s;
+}
+
+.header-nav a:hover::after {
+    width: 100%;
 }
 
 .dashboard {
-    padding: 2rem;
+    padding: 2.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .widget {
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
     display: flex;
     flex-direction: column;
 }
@@ -70,44 +94,47 @@ body {
     font-family: var(--font-header);
     color: var(--primary-blue);
     margin-top: 0;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--background-light);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .news-item {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--background-light);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f1f1f1;
 }
 
 .news-item:last-child {
     border-bottom: none;
     margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .news-item h3 {
-    margin: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
 }
 
 .news-item p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.95rem;
+    color: #555;
 }
 
 .search-widget input {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.9rem;
     font-size: 1rem;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .calendar-event {
     display: flex;
     align-items: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .calendar-date {
@@ -115,31 +142,33 @@ body {
     color: var(--primary-blue);
     font-weight: 700;
     text-align: center;
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin-right: 1rem;
+    padding: 0.6rem;
+    border-radius: 8px;
+    margin-right: 1.2rem;
+    min-width: 45px;
 }
 
 .calendar-date span {
     display: block;
     font-size: 0.8rem;
+    line-height: 1;
 }
 
 .policy-hub-container {
-    padding: 2rem;
+    padding: 2.5rem;
 }
 
 .policy-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
 }
 
 .policy-card {
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
-    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
     text-align: center;
     text-decoration: none;
     color: var(--text-dark);
@@ -147,31 +176,32 @@ body {
 }
 
 .policy-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: var(--card-hover-shadow);
 }
 
 .policy-card .icon {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: var(--primary-blue);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .policy-card h3 {
     font-family: var(--font-header);
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
 }
 
 .policy-card p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #666;
     line-height: 1.5;
 }
 
 .back-link {
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   color: var(--primary-blue);
   text-decoration: none;
   font-weight: bold;
@@ -180,41 +210,6 @@ body {
 .back-link:hover {
   text-decoration: underline;
 }
-
-.upload-section {
-    border-top: 2px solid var(--background-light);
-    margin-top: 2rem;
-    padding-top: 2rem;
-}
-
-.upload-section h3 {
-    margin-top: 0;
-}
-
-.upload-section input[type="file"] {
-    margin-bottom: 1rem;
-}
-
-.document-download {
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-blue);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-    .app-header { flex-direction: column; padding: 1rem; }
-    .header-nav { margin-top: 1rem; }
-    .header-nav a { margin: 0 0.75rem; }
-    .dashboard { padding: 1rem; gap: 1rem; }
-    .policy-hub-container { padding: 1rem; }
-}
-
-/* --- Nyt Stilrent Tabel-design til Dokumenter --- */
 
 .document-table {
   width: 100%;
@@ -226,21 +221,21 @@ body {
 .document-table th,
 .document-table td {
   text-align: left;
-  padding: 12px 15px;
-  border-bottom: 1px solid var(--border-color);
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .document-table thead th {
   font-family: var(--font-header);
   color: var(--secondary-blue);
   background-color: var(--background-light);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.75px;
 }
 
 .document-table tbody tr:hover {
-  background-color: #f9f9f9;
+  background-color: var(--background-light);
 }
 
 .document-table .file-name-cell {

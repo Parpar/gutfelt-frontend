@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import './App.css';
 import { UserProvider, UserContext } from './UserContext';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import HomePage from './pages/homepage.js';
 import LoginPage from './pages/loginpage.js';
 import SearchResultsPage from './pages/searchresults.js';
@@ -40,7 +41,7 @@ function AppContent() {
     <Router>
       <div className="app">
         <Header />
-        <main>
+        <main className="main-content">
           <Routes>
             {!currentUser ? (
               <>
@@ -83,6 +84,7 @@ function AppContent() {
             )}
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );

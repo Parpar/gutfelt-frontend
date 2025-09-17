@@ -35,6 +35,7 @@ body {
     margin: 0 auto;
     padding: 2.5rem;
     box-sizing: border-box;
+    flex-grow: 1;
 }
 
 .app-header {
@@ -172,6 +173,20 @@ body {
 .document-table .download-cell { text-align: right; }
 .document-table .download-link { padding: 6px 12px; background-color: var(--light-blue); color: white; text-decoration: none; border-radius: 5px; font-size: 0.85rem; transition: background-color 0.2s; }
 .document-table .download-link:hover { background-color: var(--primary-blue); }
+
+.app-footer {
+    background-color: var(--white);
+    color: var(--text-secondary);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.app-footer p {
+    margin: 5px 0;
+}
 
 @media (max-width: 992px) {
     .dashboard-grid {

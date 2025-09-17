@@ -1,19 +1,25 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
-import logo from '../logo.png';
 
 function Header() {
   const { currentUser, logout } = useContext(UserContext);
   const navigate = useNavigate();
-  const handleLogout = () => { logout(); navigate('/login'); };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <header className="app-header">
       <div className="header-container">
         <div className="header-logo">
-          <Link to="/"><img src="/logo.png" alt="Gutfelt Intranet Logo" /></Link>
+          <Link to="/">
+            <img src="/logo.png" alt="Gutfelt Intranet Logo" />
+          </Link>
         </div>
+        
         {currentUser && (
           <nav className="header-nav">
             <Link to="/">Hjem</Link>
@@ -23,11 +29,14 @@ function Header() {
             <Link to="/samarbejdspartnere">Samarbejdspartnere</Link>
           </nav>
         )}
+
         <div className="user-info">
           {currentUser ? (
             <>
-              <span>{currentUser.name} ({currentUser.role})</span>
-              <button onClick={handleLogout} style={{marginLeft: '1rem'}}>Log ud</button>
+              <span style={{ marginRight: '1rem' }}>
+                {currentUser.name} ({currentUser.role})
+              </span>
+              <button onClick={handleLogout} style={{cursor: 'pointer'}}>Log ud</button>
             </>
           ) : (
             <Link to="/login">Log ind</Link>
@@ -37,4 +46,5 @@ function Header() {
     </header>
   );
 }
+
 export default Header;

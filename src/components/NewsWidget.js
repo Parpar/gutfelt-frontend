@@ -26,14 +26,17 @@ function NewsWidget() {
         {isLoading ? (
           <p>Henter nyheder...</p>
         ) : (
-          newsArticles.map((article, index) => (
-            <div key={index} className="news-item">
-              <h3>{article.title}</h3>
-              <p>{article.summary}</p>
-            </div>
-          ))
+          newsArticles.length > 0 ? (
+            newsArticles.map((article, index) => (
+              <div key={index} className="news-item">
+                <h3>{article.title}</h3>
+                <p>{article.summary}</p>
+              </div>
+            ))
+          ) : (
+             <p>Der er ingen nyheder at vise.</p>
+          )
         )}
-        {!isLoading && newsArticles.length === 0 && <p>Der er ingen nyheder at vise.</p>}
       </div>
     </div>
   );

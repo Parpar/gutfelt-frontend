@@ -5,14 +5,10 @@ import CalendarWidget from './CalendarWidget';
 
 function Dashboard() {
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-row">
-        <SearchWidget />
-      </div>
-      <div className="dashboard-row">
-        <NewsWidget />
-        <CalendarWidget />
-      </div>
+    <div className="dashboard-grid">
+      <SearchWidget />
+      <NewsWidget />
+      <CalendarWidget />
     </div>
   );
 }

@@ -79,11 +79,11 @@ body {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    height: 450px;
 }
 .widget-content {
     overflow-y: auto;
     flex-grow: 1;
+    min-height: 300px;
 }
 .widget h2 {
     font-family: var(--font-header);

@@ -76,8 +76,14 @@ body {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 2.5rem;
+    grid-template-areas:
+        "search search"
+        "news calendar";
 }
-.dashboard-grid .search-widget { grid-column: 1 / -1; }
+.search-widget-container { grid-area: search; }
+.news-widget-container { grid-area: news; }
+.calendar-widget-container { grid-area: calendar; }
+
 .widget {
     background-color: var(--white);
     border-radius: 12px;
@@ -85,11 +91,11 @@ body {
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    height: 450px;
 }
 .widget-content {
     overflow-y: auto;
     flex-grow: 1;
-    min-height: 350px;
 }
 .widget h2 {
     font-family: var(--font-header);
@@ -98,6 +104,7 @@ body {
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
+    border-bottom: 1px solid var(--border-color);
 }
 .news-item {
     padding-bottom: 1rem;
@@ -107,6 +114,8 @@ body {
 .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .news-item h3 { margin: 0 0 0.25rem 0; font-size: 1.05rem; color: var(--primary-blue); }
 .news-item p { margin: 0; font-size: 0.95rem; color: var(--text-secondary); }
+
+.search-widget-container .widget { height: auto; }
 .search-widget input {
     width: 100%;
     padding: 0.9rem 1rem;
@@ -128,6 +137,7 @@ body {
     line-height: 1.2;
 }
 .calendar-date span { display: block; font-size: 0.8rem; }
+.policy-hub-container { padding: 0; }
 .policy-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -154,12 +164,18 @@ body {
 .document-table thead th { font-family: var(--font-header); color: var(--text-secondary); background-color: var(--background-grey); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 .document-table tbody tr:hover { background-color: var(--background-grey); }
 .document-table .file-icon { font-size: 1.2rem; color: var(--light-blue); margin-right: 15px; }
+.document-table .download-cell { text-align: right; }
 .document-table .download-link { padding: 6px 12px; background-color: var(--light-blue); color: white; text-decoration: none; border-radius: 5px; font-size: 0.85rem; transition: background-color 0.2s; }
 .document-table .download-link:hover { background-color: var(--primary-blue); }
 
-@media (max-width: 1200px) {
-    .dashboard-grid { grid-template-columns: 1fr; }
-    .dashboard-grid .search-widget { grid-column: 1 / -1; }
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "search"
+            "news"
+            "calendar";
+    }
 }
 @media (max-width: 768px) {
     .main-content, .policy-hub-container { padding: 1.5rem; }

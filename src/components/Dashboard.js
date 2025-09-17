@@ -6,9 +6,15 @@ import CalendarWidget from './CalendarWidget';
 function Dashboard() {
   return (
     <div className="dashboard-grid">
-      <SearchWidget />
-      <NewsWidget />
-      <CalendarWidget />
+      <div className="search-widget-container">
+        <SearchWidget />
+      </div>
+      <div className="news-widget-container">
+        <NewsWidget />
+      </div>
+      <div className="calendar-widget-container">
+        <CalendarWidget />
+      </div>
     </div>
   );
 }

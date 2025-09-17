@@ -1,3 +1,4 @@
+```jsx
 import React, { useState, useEffect } from 'react';
 
 function NewsWidget() {
@@ -22,17 +23,19 @@ function NewsWidget() {
   return (
     <div className="widget">
       <h2>Seneste Nyt</h2>
-      {isLoading ? (
-        <p>Henter nyheder...</p>
-      ) : (
-        newsArticles.map((article, index) => (
-          <div key={index} className="news-item">
-            <h3>{article.title}</h3>
-            <p>{article.summary}</p>
-          </div>
-        ))
-      )}
-      {!isLoading && newsArticles.length === 0 && <p>Der er ingen nyheder at vise.</p>}
+      <div className="widget-content">
+        {isLoading ? (
+          <p>Henter nyheder...</p>
+        ) : (
+          newsArticles.map((article, index) => (
+            <div key={index} className="news-item">
+              <h3>{article.title}</h3>
+              <p>{article.summary}</p>
+            </div>
+          ))
+        )}
+        {!isLoading && newsArticles.length === 0 && <p>Der er ingen nyheder at vise.</p>}
+      </div>
     </div>
   );
 }

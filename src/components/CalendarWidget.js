@@ -16,9 +16,6 @@ function CalendarWidget() {
     const fetchEvents = async () => {
       try {
         const response = await fetch('https://gutfelt-backend.onrender.com/api/calendar-events');
-        if (!response.ok) {
-          throw new Error('Server response was not ok');
-        }
         const data = await response.json();
         setEvents(data);
       } catch (error) {
@@ -33,26 +30,28 @@ function CalendarWidget() {
   return (
     <div className="widget">
       <h2>Kommende Begivenheder</h2>
-      {isLoading ? (
-        <p>Henter begivenheder fra kalender...</p>
-      ) : (
-        events.length > 0 ? (
-          events.map(event => {
-            const { day, month } = formatDate(event.start?.dateTime);
-            return (
-              <div key={event.id} className="calendar-event">
-                <div className="calendar-date">
-                  {day}
-                  <span>{month}</span>
-                </div>
-                <div className="calendar-title">{event.subject}</div>
-              </div>
-            );
-          })
+      <div className="widget-content">
+        {isLoading ? (
+          <p>Henter begivenheder fra kalender...</p>
         ) : (
-          <p>Der er ingen kommende begivenheder.</p>
-        )
-      )}
+          events.length > 0 ? (
+            events.map(event => {
+              const { day, month } = formatDate(event.start?.dateTime);
+              return (
+                <div key={event.id} className="calendar-event">
+                  <div className="calendar-date">
+                    {day}
+                    <span>{month}</span>
+                  </div>
+                  <div className="calendar-title">{event.subject}</div>
+                </div>
+              );
+            })
+          ) : (
+            <p>Der er ingen kommende begivenheder.</p>
+          )
+        )}
+      </div>
     </div>
   );
 }

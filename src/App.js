@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import { UserProvider, UserContext } from './UserContext';
+
 import Header from './components/Header';
 import HomePage from './pages/homepage.js';
 import LoginPage from './pages/loginpage.js';
@@ -43,7 +44,7 @@ function AppContent() {
     <Router>
       <div className="app">
         <Header />
-        <main>
+        <main className="main-content">
           <Routes>
             {!currentUser ? (
               <>

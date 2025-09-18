@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function EmployeesPage() {
   return (
-    <div className="policy-hub-container">
-      <div className="widget" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+    <div className="policy-hub-container medarbejdere-hub">
+      <div className="widget">
         <h2>Medarbejdere</h2>
         <p>Find information og materialer relateret til medarbejdere.</p>
       </div>

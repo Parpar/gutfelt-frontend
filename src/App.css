@@ -1,17 +1,21 @@
 :root {
-    --primary-blue: #0d47a1;
-    --light-blue: #1976d2;
+    --primary-blue: #001B94;
+    --light-blue: #1a73e8;
     --background-grey: #f4f7f9;
     --text-primary: #212529;
     --text-secondary: #6c757d;
+    --text-on-dark: #ffffff;
     --border-color: #e9ecef;
     --white: #ffffff;
     --font-header: 'Montserrat', sans-serif;
     --font-body: 'Lato', sans-serif;
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
     --shadow-md: 0 4px 10px rgba(0,0,0,0.06);
+    --color-standarder: #2e7d32;
+    --color-firmapolitikker: #d84315;
+    --color-medarbejdere: #6a1b9a;
+    --color-samarbejdspartnere: #006064;
 }
-
 body {
     margin: 0;
     font-family: var(--font-body);
@@ -22,13 +26,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 .app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-
 .main-content {
     width: 100%;
     max-width: 1400px;
@@ -37,13 +39,11 @@ body {
     box-sizing: border-box;
     flex-grow: 1;
 }
-
 .app-header {
-    background-color: var(--white);
+    background-color: var(--primary-blue);
     padding: 0.75rem 2.5rem;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -55,13 +55,11 @@ body {
     display: flex;
     align-items: center;
 }
-
 .header-logo a { display: flex; align-items: center; }
 .header-logo img { height: 40px; }
-
 .header-nav { margin: 0 auto; }
 .header-nav a {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     margin: 0 1.5rem;
     font-weight: 700;
@@ -70,21 +68,29 @@ body {
     position: relative;
     padding: 1rem 0;
 }
-.header-nav a:hover { color: var(--primary-blue); }
-.user-info { display: flex; align-items: center; }
-
+.header-nav a:hover { color: var(--text-on-dark); }
+.user-info { display: flex; align-items: center; color: var(--text-on-dark); }
+.user-info span { margin-right: 1rem; font-size: 0.9rem; }
+.user-info button, .user-info a {
+    background: var(--light-blue);
+    color: var(--white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
 .dashboard-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 2.5rem;
-    grid-template-areas:
-        "search search"
-        "news calendar";
+    grid-template-areas: "search search" "news calendar";
 }
 .search-widget-container { grid-area: search; }
 .news-widget-container { grid-area: news; }
 .calendar-widget-container { grid-area: calendar; }
-
 .widget {
     background-color: var(--white);
     border-radius: 12px;
@@ -93,12 +99,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-.news-widget-container .widget,
-.calendar-widget-container .widget {
-    height: 450px;
-}
-
+.news-widget-container .widget, .calendar-widget-container .widget { height: 450px; }
 .widget-content {
     overflow-y: auto;
     flex-grow: 1;
@@ -120,7 +121,6 @@ body {
 .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .news-item h3 { margin: 0 0 0.25rem 0; font-size: 1.05rem; color: var(--primary-blue); }
 .news-item p { margin: 0; font-size: 0.95rem; color: var(--text-secondary); }
-
 .search-widget-container .widget { height: auto; }
 .search-widget input {
     width: 100%;
@@ -158,11 +158,20 @@ body {
     text-decoration: none;
     color: var(--text-primary);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-top: 4px solid var(--border-color);
 }
 .policy-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-.policy-card .icon { font-size: 3rem; color: var(--primary-blue); margin-bottom: 1.5rem; }
+.policy-card .icon { font-size: 3rem; margin-bottom: 1.5rem; }
 .policy-card h3 { font-family: var(--font-header); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.2rem; }
 .policy-card p { font-size: 0.95rem; color: var(--text-secondary); }
+.standarder-hub .policy-card { border-top-color: var(--color-standarder); }
+.standarder-hub .policy-card .icon { color: var(--color-standarder); }
+.firmapolitikker-hub .policy-card { border-top-color: var(--color-firmapolitikker); }
+.firmapolitikker-hub .policy-card .icon { color: var(--color-firmapolitikker); }
+.medarbejdere-hub .policy-card { border-top-color: var(--color-medarbejdere); }
+.medarbejdere-hub .policy-card .icon { color: var(--color-medarbejdere); }
+.samarbejdspartnere-hub .policy-card { border-top-color: var(--color-samarbejdspartnere); }
+.samarbejdspartnere-hub .policy-card .icon { color: var(--color-samarbejdspartnere); }
 .back-link { display: inline-block; margin-top: 2.5rem; color: var(--primary-blue); text-decoration: none; font-weight: bold; }
 .back-link:hover { text-decoration: underline; }
 .document-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
@@ -173,7 +182,6 @@ body {
 .document-table .download-cell { text-align: right; }
 .document-table .download-link { padding: 6px 12px; background-color: var(--light-blue); color: white; text-decoration: none; border-radius: 5px; font-size: 0.85rem; transition: background-color 0.2s; }
 .document-table .download-link:hover { background-color: var(--primary-blue); }
-
 .app-footer {
     background-color: var(--white);
     color: var(--text-secondary);
@@ -183,18 +191,24 @@ body {
     border-top: 1px solid var(--border-color);
     margin-top: auto;
 }
-
-.app-footer p {
-    margin: 5px 0;
+.app-footer p { margin: 5px 0; }
+.tab-navigation { margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
+.tab-navigation button {
+    padding: 10px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
 }
-
+.tab-navigation button.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
 @media (max-width: 992px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
-        grid-template-areas:
-            "search"
-            "news"
-            "calendar";
+        grid-template-areas: "search" "news" "calendar";
     }
 }
 @media (max-width: 768px) {

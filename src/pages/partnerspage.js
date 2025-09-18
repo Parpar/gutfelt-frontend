@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function PartnersPage() {
   return (
-    <div className="policy-hub-container">
-      <div className="widget" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+    <div className="policy-hub-container samarbejdspartnere-hub">
+      <div className="widget">
         <h2>Samarbejdspartnere</h2>
         <p>Information vedrørende bygninger, rådgivere, systemer og kontrakter.</p>
       </div>

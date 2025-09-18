@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function DocumentsPage() {
   return (
-    <div className="policy-hub-container">
-      <div className="widget" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+    <div className="policy-hub-container standarder-hub">
+      <div className="widget">
         <h2>Standarder</h2>
         <p>Vælg en kategori nedenfor for at finde de relevante skabeloner og dokumenter.</p>
       </div>
@@ -43,5 +43,4 @@ function DocumentsPage() {
     </div>
   );
 }
-
 export default DocumentsPage;

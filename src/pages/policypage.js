@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function PolicyPage() {
   return (
-    <div className="policy-hub-container">
-      <div className="widget" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+    <div className="policy-hub-container firmapolitikker-hub">
+      <div className="widget">
         <h2>Firmapolitikker</h2>
         <p>Vælg en kategori nedenfor for at læse de specifikke retningslinjer og politikker.</p>
       </div>

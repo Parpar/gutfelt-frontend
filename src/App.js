@@ -41,7 +41,7 @@ function AppContent() {
     <Router>
       <div className="app">
         <Header />
-        <main className="main-content">
+        <main>
           <Routes>
             {!currentUser ? (
               <>
@@ -97,4 +97,4 @@ function App() {
     </UserProvider>
   );
 }
-export default App;
+export default App;```

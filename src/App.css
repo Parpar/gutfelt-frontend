@@ -204,22 +204,3 @@ body {
     .header-nav { margin-top: 1rem; }
     .header-nav a { margin: 0 0.75rem; }
 }
-.tab-navigation {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
-}
-.tab-navigation button {
-    padding: 10px 20px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    border-bottom: 3px solid transparent;
-    margin-bottom: -1px;
-}
-.tab-navigation button.active {
-    color: var(--primary-blue);
-    border-bottom-color: var(--primary-blue);
-}

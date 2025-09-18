@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserContext } from './UserContext';
+import { UserContext } from '../UserContext';
 
 function Header() {
   const { currentUser, logout } = useContext(UserContext);
   const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
+
   return (
     <header className="app-header">
       <div className="header-logo">
@@ -16,6 +18,7 @@ function Header() {
           <img src="/logo.png" alt="Gutfelt Intranet Logo" />
         </Link>
       </div>
+      
       {currentUser && (
         <nav className="header-nav">
           <Link to="/">Hjem</Link>
@@ -25,6 +28,7 @@ function Header() {
           <Link to="/samarbejdspartnere">Samarbejdspartnere</Link>
         </nav>
       )}
+
       <div className="user-info">
         {currentUser ? (
           <>
@@ -40,4 +44,5 @@ function Header() {
     </header>
   );
 }
+
 export default Header;

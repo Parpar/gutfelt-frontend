@@ -69,6 +69,9 @@ body {
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
+.search-widget-container { grid-area: search; }
+.news-widget-container { grid-area: news; }
+.calendar-widget-container { grid-area: calendar; }
 .widget {
     background-color: #fff;
     border-radius: 8px;
@@ -166,15 +169,16 @@ body {
         padding-top: 0;
     }
     .header-nav a {
-        font-size: 0.9rem;
+        color: var(--text-light);
+        text-decoration: none;
         margin-left: 1.5rem;
-        padding: 0;
-        border-bottom: none;
+        font-weight: 700;
+        font-size: 0.9rem;
         transition: opacity 0.2s;
     }
     .header-nav a:hover { opacity: 0.8; }
     .user-info-desktop { display: inline; }
-    .dashboard-grid { grid-template-columns: 2fr 1fr; grid-template-areas: "search search" "news calendar"; padding: 2.5rem; gap: 2.5rem; }
+    .dashboard-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "search search" "news calendar"; padding: 2.5rem; gap: 2.5rem; }
     .policy-hub-container { padding: 2rem; }
     .policy-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .policy-card p { display: block; }

@@ -43,10 +43,11 @@ body {
 .dashboard-grid {
     padding: 2.5rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 2.5rem;
+    grid-template-areas: "search search" "news calendar";
 }
-.dashboard-grid .search-widget-container { grid-column: 1 / span 2; }
+.search-widget-container { grid-area: search; }
 .news-widget-container { grid-area: news; }
 .calendar-widget-container { grid-area: calendar; }
 .widget {
@@ -122,6 +123,16 @@ body {
 .document-table .file-icon { font-size: 1.2rem; color: var(--primary-blue); margin-right: 15px; }
 .document-table .download-cell { text-align: right; }
 .document-table .download-link { padding: 6px 12px; background-color: var(--primary-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; }
+.app-footer {
+    background-color: var(--white);
+    color: var(--text-secondary);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+.app-footer p { margin: 5px 0; }
 .tab-navigation { margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
 .tab-navigation button {
     padding: 10px 20px;

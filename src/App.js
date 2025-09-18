@@ -41,7 +41,7 @@ function AppContent() {
     <Router>
       <div className="app">
         <Header />
-        <main>
+        <main className="main-content">
           <Routes>
             {!currentUser ? (
               <>
@@ -89,7 +89,6 @@ function AppContent() {
     </Router>
   );
 }
-
 function App() {
   return (
     <UserProvider>

@@ -41,12 +41,46 @@ function AppContent() {
     <Router>
       <div className="app">
         <Header />
-        <main>
+        <main className="main-content">
           <Routes>
             {!currentUser ? (
-              <><Route path="/login" element={<LoginPage />} /><Route path="*" element={<Navigate to="/login" replace />} /></>
+              <>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="*" element={<Navigate to="/login" replace />} />
+              </>
             ) : (
-              <><Route path="/" element={<HomePage />} /><Route path="/search" element={<SearchResultsPage />} /><Route path="/standarder" element={<DocumentsPage />} /><Route path="/firmapolitikker" element={<PolicyPage />} /><Route path="/medarbejdere" element={<EmployeesPage />} /><Route path="/samarbejdspartnere" element={<PartnersPage />} /><Route path="/firmapolitikker/fakturering" element={<FaktureringPage />} /><Route path="/firmapolitikker/kickoff" element={<KickoffPage />} /><Route path="/firmapolitikker/kundehåndtering" element={<KundehåndteringPage />} /><Route path="/firmapolitikker/kvalitetsstyring" element={<KvalitetsstyringPage />} /><Route path="/firmapolitikker/mandagsmøder" element={<MandagsmøderPage />} /><Route path="/firmapolitikker/personalehåndbog" element={<PersonalehåndbogPage />} /><Route path="/firmapolitikker/persondatapolitik" element={<PersondatapolitikPage />} /><Route path="/firmapolitikker/slettepolitik" element={<SlettepolitikPage />} /><Route path="/firmapolitikker/whistleblower" element={<WhistleblowerPage />} /><Route path="/standarder/aftalebreve" element={<AftalebrevePage />} /><Route path="/standarder/engagement" element={<EngagementPage />} /><Route path="/standarder/habilitet" element={<HabilitetPage />} /><Route path="/standarder/protokollat" element={<ProtokollatPage />} /><Route path="/standarder/tjeklister" element={<TjeklisterPage />} /><Route path="/standarder/oevrige" element={<OevrigePage />} /><Route path="/medarbejdere/fjernlager" element={<FjernlagerPage />} /><Route path="/medarbejdere/kompetenceskema" element={<KompetenceskemaPage />} /><Route path="/medarbejdere/kursusmaterialer" element={<KursusmaterialerPage />} /><Route path="/medarbejdere/planlægning" element={<PlanlægningPage />} /><Route path="/samarbejdspartnere/bygning" element={<BygningPage />} /><Route path="/samarbejdspartnere/rådgivere" element={<RådgiverePage />} /><Route path="/samarbejdspartnere/systemer" element={<SystemerPage />} /><Route path="/samarbejdspartnere/forsikringer" element={<ForsikringerPage />} /><Route path="*" element={<Navigate to="/" replace />} /></>
+              <>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/search" element={<SearchResultsPage />} />
+                <Route path="/standarder" element={<DocumentsPage />} />
+                <Route path="/firmapolitikker" element={<PolicyPage />} />
+                <Route path="/medarbejdere" element={<EmployeesPage />} />
+                <Route path="/samarbejdspartnere" element={<PartnersPage />} />
+                <Route path="/firmapolitikker/fakturering" element={<FaktureringPage />} />
+                <Route path="/firmapolitikker/kickoff" element={<KickoffPage />} />
+                <Route path="/firmapolitikker/kundehåndtering" element={<KundehåndteringPage />} />
+                <Route path="/firmapolitikker/kvalitetsstyring" element={<KvalitetsstyringPage />} />
+                <Route path="/firmapolitikker/mandagsmøder" element={<MandagsmøderPage />} />
+                <Route path="/firmapolitikker/personalehåndbog" element={<PersonalehåndbogPage />} />
+                <Route path="/firmapolitikker/persondatapolitik" element={<PersondatapolitikPage />} />
+                <Route path="/firmapolitikker/slettepolitik" element={<SlettepolitikPage />} />
+                <Route path="/firmapolitikker/whistleblower" element={<WhistleblowerPage />} />
+                <Route path="/standarder/aftalebreve" element={<AftalebrevePage />} />
+                <Route path="/standarder/engagement" element={<EngagementPage />} />
+                <Route path="/standarder/habilitet" element={<HabilitetPage />} />
+                <Route path="/standarder/protokollat" element={<ProtokollatPage />} />
+                <Route path="/standarder/tjeklister" element={<TjeklisterPage />} />
+                <Route path="/standarder/oevrige" element={<OevrigePage />} />
+                <Route path="/medarbejdere/fjernlager" element={<FjernlagerPage />} />
+                <Route path="/medarbejdere/kompetenceskema" element={<KompetenceskemaPage />} />
+                <Route path="/medarbejdere/kursusmaterialer" element={<KursusmaterialerPage />} />
+                <Route path="/medarbejdere/planlægning" element={<PlanlægningPage />} />
+                <Route path="/samarbejdspartnere/bygning" element={<BygningPage />} />
+                <Route path="/samarbejdspartnere/rådgivere" element={<RådgiverePage />} />
+                <Route path="/samarbejdspartnere/systemer" element={<SystemerPage />} />
+                <Route path="/samarbejdspartnere/forsikringer" element={<ForsikringerPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </>
             )}
           </Routes>
         </main>
@@ -55,5 +89,13 @@ function AppContent() {
     </Router>
   );
 }
-function App() { return (<UserProvider><AppContent /></UserProvider>); }
+
+function App() {
+  return (
+    <UserProvider>
+      <AppContent />
+    </UserProvider>
+  );
+}
+
 export default App;

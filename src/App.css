@@ -22,30 +22,55 @@ body {
 .app-header {
     background-color: var(--primary-blue);
     color: var(--text-light);
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.header-logo a { display: flex; align-items: center; }
-.header-logo img { height: 40px; }
+.header-logo a { display: flex; align-items: center; z-index: 1001; }
+.header-logo img { height: 35px; }
+.header-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-blue);
+    padding-top: 6rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+}
+.header-nav.is-open { transform: translateX(0); }
 .header-nav a {
     color: var(--text-light);
     text-decoration: none;
-    margin-left: 1.5rem;
     font-weight: 700;
-    font-size: 0.9rem;
-    transition: opacity 0.2s;
+    font-size: 1.2rem;
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-.header-nav a:hover { opacity: 0.8; }
-.user-info { margin-left: auto; display: flex; align-items: center; }
+.user-info { display: flex; align-items: center; z-index: 1001; }
+.user-info-desktop { display: none; }
+.hamburger-menu {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    z-index: 1001;
+}
 .dashboard-grid {
-    padding: 2.5rem;
+    padding: 1.5rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    grid-template-areas: "search search" "news calendar";
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 }
 .search-widget-container { grid-area: search; }
 .news-widget-container { grid-area: news; }
@@ -59,10 +84,7 @@ body {
     flex-direction: column;
 }
 .news-widget-container .widget, .calendar-widget-container .widget { height: 450px; }
-.widget-content {
-    overflow-y: auto;
-    flex-grow: 1;
-}
+.widget-content { overflow-y: auto; flex-grow: 1; }
 .widget h2 {
     font-family: var(--font-header);
     color: var(--primary-blue);
@@ -70,10 +92,11 @@ body {
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 .news-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #f4f4f4; }
 .news-item:last-child { border-bottom: none; margin-bottom: 0; }
-.news-item h3 { margin: 0 0 0.25rem 0; }
+.news-item h3 { margin: 0 0 0.25rem 0; font-size: 1rem; }
 .news-item p { margin: 0; font-size: 0.9rem; color: #666; }
 .search-widget-container .widget { height: auto; }
 .search-widget input {
@@ -94,54 +117,40 @@ body {
     margin-right: 1rem;
 }
 .calendar-date span { display: block; font-size: 0.8rem; }
-.policy-hub-container { padding: 2rem; }
-.policy-hub-container .widget {
-    margin-bottom: 2rem;
-}
-.policy-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
+.policy-hub-container { padding: 1.5rem; }
+.policy-hub-container .widget { margin-bottom: 1.5rem; }
+.policy-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 .policy-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.07);
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     text-decoration: none;
     color: var(--text-dark);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-.policy-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.policy-card .icon { font-size: 3rem; color: var(--primary-blue); margin-bottom: 1rem; }
-.policy-card h3 { font-family: var(--font-header); margin-top: 0; margin-bottom: 0.5rem; }
-.policy-card p { font-size: 0.9rem; color: #666; line-height: 1.5; }
-.back-link { display: inline-block; margin-top: 2rem; color: var(--primary-blue); text-decoration: none; font-weight: bold; }
-.back-link:hover { text-decoration: underline; }
-.document-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
-.document-table th, .document-table td { text-align: left; padding: 12px 15px; border-bottom: 1px solid var(--border-color); }
-.document-table thead th { font-family: var(--font-header); color: var(--secondary-blue); background-color: var(--background-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.document-table tbody tr:hover { background-color: #f9f9f9; }
-.document-table .file-icon { font-size: 1.2rem; color: var(--primary-blue); margin-right: 15px; }
-.document-table .download-cell { text-align: right; }
-.document-table .download-link { padding: 6px 12px; background-color: var(--primary-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; }
+.policy-card .icon { font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 1rem; }
+.policy-card h3 { font-family: var(--font-header); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.1rem; }
+.policy-card p { display: none; }
+.back-link { display: inline-block; margin-top: 1.5rem; color: var(--primary-blue); text-decoration: none; font-weight: bold; }
+.document-table { display: block; overflow-x: auto; white-space: nowrap; width: 100%; margin-top: 1.5rem; }
+.document-table th, .document-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-color); }
 .app-footer {
     background-color: var(--primary-blue);
     color: var(--text-light);
-    padding: 2rem 2.5rem;
+    padding: 1.5rem;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     margin-top: auto;
 }
 .app-footer p { margin: 5px 0; }
-.tab-navigation { margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
+.tab-navigation { margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
 .tab-navigation button {
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-secondary);
     border-bottom: 3px solid transparent;
@@ -149,11 +158,33 @@ body {
 }
 .tab-navigation button.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
 
-@media (max-width: 992px) {
-    .dashboard-grid { grid-template-columns: 1fr; grid-template-areas: "search" "news" "calendar"; }
-    .header-nav { display: none; }
-    .app-header { flex-direction: column; padding: 1rem; }
-    .header-nav { margin-top: 1rem; }
-    .header-nav a { margin: 0 0.75rem; }
-    .policy-hub-container { padding: 1rem; }
+@media (min-width: 992px) {
+    .app-header { padding: 1rem 2rem; }
+    .hamburger-menu { display: none; }
+    .header-logo img { height: 40px; }
+    .header-nav {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        background: none;
+        transform: none;
+        box-shadow: none;
+        padding-top: 0;
+    }
+    .header-nav a {
+        color: var(--text-light);
+        text-decoration: none;
+        margin-left: 1.5rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+    }
+    .header-nav a:hover { opacity: 0.8; }
+    .user-info-desktop { display: inline; }
+    .dashboard-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "search search" "news calendar"; padding: 2.5rem; gap: 2.5rem; }
+    .policy-hub-container { padding: 2rem; }
+    .policy-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .policy-card p { display: block; }
 }

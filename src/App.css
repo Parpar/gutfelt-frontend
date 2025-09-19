@@ -37,26 +37,10 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-<<<<<<< HEAD
-.header-logo a { display: flex; align-items: center; }
-.header-logo img { height: 40px; }
-.header-nav { display: none; }
-.user-info { margin-left: auto; display: flex; align-items: center; }
-.user-info-desktop { display: none; }
-.hamburger-menu {
-    display: block;
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    cursor: pointer;
-    margin-left: 1rem;
-=======
 .header-logo a { display: flex; align-items: center; z-index: 1001; }
 .header-logo img { height: 35px; }
 .header-nav {
     display: none;
->>>>>>> 4d0b6b94432210622b90c65b200ec8b964fcb4f7
 }
 .header-nav.is-open {
     display: flex;
@@ -78,8 +62,6 @@ body {
     padding: 1.5rem;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-<<<<<<< HEAD
-=======
 }
 .user-info { display: flex; align-items: center; z-index: 1001; }
 .user-info-desktop { display: none; }
@@ -92,7 +74,6 @@ body {
     cursor: pointer;
     margin-left: 1rem;
     z-index: 1001;
->>>>>>> 4d0b6b94432210622b90c65b200ec8b964fcb4f7
 }
 .dashboard-grid {
     padding: 1.5rem;
@@ -161,13 +142,8 @@ body {
 .policy-card h3 { font-family: var(--font-header); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.1rem; }
 .policy-card p { display: none; }
 .back-link { display: inline-block; margin-top: 1.5rem; color: var(--primary-blue); text-decoration: none; font-weight: bold; }
-.document-table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 0.95rem; }
-.document-table th, .document-table td { text-align: left; padding: 12px 15px; border-bottom: 1px solid var(--border-color); }
-.document-table thead th { font-family: var(--font-header); color: var(--secondary-blue); background-color: #f9f9f9; font-size: 0.85rem; text-transform: uppercase; }
-.document-table tbody tr:hover { background-color: #f9f9f9; }
-.document-table .file-icon { font-size: 1.2rem; color: var(--primary-blue); margin-right: 15px; }
-.document-table .download-cell { text-align: right; }
-.document-table .download-link { padding: 6px 12px; background-color: var(--primary-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; }
+.document-table { display: block; overflow-x: auto; white-space: nowrap; width: 100%; margin-top: 1.5rem; }
+.document-table th, .document-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-color); }
 .app-footer {
     background-color: var(--primary-blue);
     color: var(--text-light);
@@ -192,14 +168,10 @@ body {
 .tab-navigation button.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
 
 @media (min-width: 992px) {
-<<<<<<< HEAD
-    .hamburger-menu { display: none; }
-=======
     .app-header { padding: 1rem 2rem; }
     .header-container { justify-content: flex-start; }
     .hamburger-menu { display: none; }
     .header-logo img { height: 40px; }
->>>>>>> 4d0b6b94432210622b90c65b200ec8b964fcb4f7
     .header-nav {
         display: flex;
         position: static;
@@ -210,16 +182,6 @@ body {
         transform: none;
         box-shadow: none;
         padding-top: 0;
-<<<<<<< HEAD
-    }
-    .header-nav a {
-        margin-left: 1.5rem;
-        padding: 0;
-        border-bottom: none;
-    }
-    .user-info-desktop { display: inline; }
-}
-=======
         margin: 0 auto;
     }
     .header-nav a {
@@ -238,4 +200,3 @@ body {
     .policy-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .policy-card p { display: block; }
 }
->>>>>>> 4d0b6b94432210622b90c65b200ec8b964fcb4f7

@@ -24,13 +24,25 @@ body {
     color: var(--text-light);
     padding: 1rem 1.5rem;
     display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .header-logo a { display: flex; align-items: center; z-index: 1001; }
 .header-logo img { height: 35px; }
 .header-nav {
+    display: none;
+}
+.header-nav.is-open {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -40,12 +52,9 @@ body {
     height: 100vh;
     background-color: var(--primary-blue);
     padding-top: 6rem;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
     z-index: 999;
 }
-.header-nav.is-open { transform: translateX(0); }
-.header-nav a {
+.header-nav.is-open a {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 700;
@@ -133,8 +142,13 @@ body {
 .policy-card h3 { font-family: var(--font-header); margin-top: 0; margin-bottom: 0.5rem; font-size: 1.1rem; }
 .policy-card p { display: none; }
 .back-link { display: inline-block; margin-top: 1.5rem; color: var(--primary-blue); text-decoration: none; font-weight: bold; }
-.document-table { display: block; overflow-x: auto; white-space: nowrap; width: 100%; margin-top: 1.5rem; }
-.document-table th, .document-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-color); }
+.document-table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 0.95rem; }
+.document-table th, .document-table td { text-align: left; padding: 12px 15px; border-bottom: 1px solid var(--border-color); }
+.document-table thead th { font-family: var(--font-header); color: var(--secondary-blue); background-color: #f9f9f9; font-size: 0.85rem; text-transform: uppercase; }
+.document-table tbody tr:hover { background-color: #f9f9f9; }
+.document-table .file-icon { font-size: 1.2rem; color: var(--primary-blue); margin-right: 15px; }
+.document-table .download-cell { text-align: right; }
+.document-table .download-link { padding: 6px 12px; background-color: var(--primary-blue); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; }
 .app-footer {
     background-color: var(--primary-blue);
     color: var(--text-light);
@@ -160,6 +174,7 @@ body {
 
 @media (min-width: 992px) {
     .app-header { padding: 1rem 2rem; }
+    .header-container { justify-content: flex-start; }
     .hamburger-menu { display: none; }
     .header-logo img { height: 40px; }
     .header-nav {
@@ -172,6 +187,7 @@ body {
         transform: none;
         box-shadow: none;
         padding-top: 0;
+        margin: 0 auto;
     }
     .header-nav a {
         color: var(--text-light);
@@ -182,6 +198,7 @@ body {
         transition: opacity 0.2s;
     }
     .header-nav a:hover { opacity: 0.8; }
+    .user-info { margin-left: auto; }
     .user-info-desktop { display: inline; }
     .dashboard-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "search search" "news calendar"; padding: 2.5rem; gap: 2.5rem; }
     .policy-hub-container { padding: 2rem; }

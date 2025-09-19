@@ -24,7 +24,9 @@ body {
     color: var(--text-light);
     padding: 1rem 1.5rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -80,6 +82,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    grid-template-areas: "search" "news" "calendar";
 }
 .search-widget-container { grid-area: search; }
 .news-widget-container { grid-area: news; }

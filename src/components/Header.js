@@ -24,7 +24,7 @@ function Header() {
         </Link>
       </div>
       
-      <nav className={`header-nav ${isMenuOpen ? 'is-open' : ''}`}>
+      <nav className={`${isMenuOpen ? 'is-open' : ''}`}>
         <Link to="/" onClick={closeMenu}>Hjem</Link>
         <Link to="/standarder" onClick={closeMenu}>Standarder</Link>
         <Link to="/firmapolitikker" onClick={closeMenu}>Firmapolitikker</Link>
@@ -35,7 +35,7 @@ function Header() {
       <div className="user-info">
         {currentUser ? (
           <>
-            <span className="user-info-desktop">
+            <span className="user-info-desktop" style={{ marginRight: '1rem' }}>
               {currentUser.name} ({currentUser.role})
             </span>
             <button onClick={handleLogout} style={{cursor: 'pointer', marginLeft: '1rem'}}>Log ud</button>

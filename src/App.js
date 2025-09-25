@@ -20,6 +20,7 @@ import PersonalehåndbogPage from './pages/personalehåndbog.js';
 import PersondatapolitikPage from './pages/persondatapolitik.js';
 import SlettepolitikPage from './pages/slettepolitik.js';
 import WhistleblowerPage from './pages/whistleblower.js';
+import HvidvaskPage from './pages/hvidvask.js';
 import AftalebrevePage from './pages/aftalebreve.js';
 import EngagementPage from './pages/engagement.js';
 import HabilitetPage from './pages/habilitet.js';
@@ -41,7 +42,7 @@ function AppContent() {
     <Router>
       <div className="app">
         <Header />
-        <main className="main-content">
+        <main>
           <Routes>
             {!currentUser ? (
               <>
@@ -65,6 +66,7 @@ function AppContent() {
                 <Route path="/firmapolitikker/persondatapolitik" element={<PersondatapolitikPage />} />
                 <Route path="/firmapolitikker/slettepolitik" element={<SlettepolitikPage />} />
                 <Route path="/firmapolitikker/whistleblower" element={<WhistleblowerPage />} />
+                <Route path="/firmapolitikker/hvidvask" element={<HvidvaskPage />} />
                 <Route path="/standarder/aftalebreve" element={<AftalebrevePage />} />
                 <Route path="/standarder/engagement" element={<EngagementPage />} />
                 <Route path="/standarder/habilitet" element={<HabilitetPage />} />

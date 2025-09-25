@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function PolicyPage() {
   return (
-    <div className="policy-hub-container firmapolitikker-hub">
-      <div className="widget">
+    <div className="policy-hub-container">
+      <div className="widget" style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <h2>Firmapolitikker</h2>
         <p>Vælg en kategori nedenfor for at læse de specifikke retningslinjer og politikker.</p>
       </div>
@@ -18,6 +18,7 @@ function PolicyPage() {
         <Link to="/firmapolitikker/persondatapolitik" className="policy-card"><div className="icon"><i className="fas fa-user-shield"></i></div><h3>Persondatapolitik</h3></Link>
         <Link to="/firmapolitikker/slettepolitik" className="policy-card"><div className="icon"><i className="fas fa-trash-alt"></i></div><h3>Slettepolitik</h3></Link>
         <Link to="/firmapolitikker/whistleblower" className="policy-card"><div className="icon"><i className="fas fa-bullhorn"></i></div><h3>Whistleblowordning</h3></Link>
+        <Link to="/firmapolitikker/hvidvask" className="policy-card"><div className="icon"><i className="fas fa-balance-scale-left"></i></div><h3>Hvidvask</h3></Link>
       </div>
     </div>
   );

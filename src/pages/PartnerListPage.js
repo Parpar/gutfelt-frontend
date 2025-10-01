@@ -4,17 +4,28 @@ import { Link } from 'react-router-dom';
 function PartnerListPage({ category, pageTitle, backLink }) {
   const [partners, setPartners] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchPartners = async () => {
+      if (!category) {
+        setError("Kategori er ikke defineret.");
+        setIsLoading(false);
+        return;
+      }
       setIsLoading(true);
+      setError('');
       try {
-        const response = await fetch(`https://gutfelt-backend-staging.onrender.com/api/partners/${category}`);
-        if (!response.ok) throw new Error('Server response not ok');
+        const apiUrl = `https://gutfelt-backend-staging.onrender.com/api/partners/${category}`;
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`Serveren svarede med status ${response.status}`);
+        }
         const data = await response.json();
         setPartners(data);
       } catch (error) {
         console.error("Kunne ikke hente partnere:", error);
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -25,9 +36,10 @@ function PartnerListPage({ category, pageTitle, backLink }) {
   return (
     <div className="widget" style={{ margin: '2rem' }}>
       <h2>{pageTitle}</h2>
-      {isLoading ? (
-        <p>Henter partnerinformation...</p>
-      ) : (
+      {isLoading && <p>Henter partnerinformation...</p>}
+      {error && <p style={{ color: 'red' }}>Fejl: {error}</p>}
+      
+      {!isLoading && !error && (
         <table className="document-table">
           <thead>
             <tr>
@@ -51,7 +63,7 @@ function PartnerListPage({ category, pageTitle, backLink }) {
           </tbody>
         </table>
       )}
-      {!isLoading && partners.length === 0 && <p>Der er ingen partnere i denne kategori.</p>}
+      {!isLoading && partners.length === 0 && !error && <p>Der er ingen partnere i denne kategori.</p>}
       <Link to={backLink} className="back-link">← Tilbage til Samarbejdspartnere</Link>
     </div>
   );

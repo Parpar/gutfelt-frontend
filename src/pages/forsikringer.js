@@ -1,15 +1,7 @@
 import React from 'react';
-import UploadPage from './UploadPage';
+import PartnerListPage from './PartnerListPage';
 
-function ForsikringerPage() {
-    return (
-        <UploadPage 
-            pageTitle="Forsikringer og øvrige kontrakter"
-            category="forsikringer"
-            backLink="/samarbejdspartnere"
-            backLinkText="Samarbejdspartnere"
-            iconClass="fa-shield-alt"
-        />
-    );
+function ForsikringerPage() { 
+    return <PartnerListPage category="Forsikringer" pageTitle="Forsikringer og øvrige kontrakter" backLink="/samarbejdspartnere" />; 
 }
 export default ForsikringerPage;

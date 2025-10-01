@@ -1,4 +1,7 @@
 import React from 'react';
-import UploadPage from './UploadPage';
-function BygningPage() { return <UploadPage pageTitle="Bygning, faciliteter, frokost" category="bygning" backLink="/samarbejdspartnere" backLinkText="Samarbejdspartnere" iconClass="fa-building" />; }
+import PartnerListPage from './PartnerListPage';
+
+function BygningPage() { 
+    return <PartnerListPage category="Bygning" pageTitle="Bygning, faciliteter, frokost" backLink="/samarbejdspartnere" />; 
+}
 export default BygningPage;

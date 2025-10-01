@@ -1,4 +1,7 @@
 import React from 'react';
-import UploadPage from './UploadPage';
-function RådgiverePage() { return <UploadPage pageTitle="Rådgivere" category="rådgivere" backLink="/samarbejdspartnere" backLinkText="Samarbejdspartnere" iconClass="fa-user-tie" />; }
+import PartnerListPage from './PartnerListPage';
+
+function RådgiverePage() { 
+    return <PartnerListPage category="Rådgivere" pageTitle="Rådgivere" backLink="/samarbejdspartnere" />; 
+}
 export default RådgiverePage;

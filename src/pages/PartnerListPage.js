@@ -9,7 +9,7 @@ function PartnerListPage({ category, pageTitle, backLink }) {
     const fetchPartners = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`https://gutfelt-backend.onrender.com/api/partners/${category}`);
+        const response = await fetch(`https://gutfelt-backend-staging.onrender.com/api/partners/${category}`);
         const data = await response.json();
         setPartners(data);
       } catch (error) {
@@ -32,8 +32,9 @@ function PartnerListPage({ category, pageTitle, backLink }) {
             <tr>
               <th>Firma</th>
               <th>Kontaktperson</th>
-              <th>Email</th>
               <th>Telefon</th>
+              <th>Email</th>
+              <th>Noter</th>
             </tr>
           </thead>
           <tbody>
@@ -41,8 +42,9 @@ function PartnerListPage({ category, pageTitle, backLink }) {
               <tr key={index}>
                 <td>{partner.Title}</td>
                 <td>{partner.Kontaktperson || '-'}</td>
-                <td>{partner.Email ? <a href={`mailto:${partner.Email}`}>{partner.Email}</a> : '-'}</td>
                 <td>{partner.Telefon || '-'}</td>
+                <td>{partner.Email ? <a href={`mailto:${partner.Email}`}>{partner.Email}</a> : '-'}</td>
+                <td>{partner.Noter || '-'}</td>
               </tr>
             ))}
           </tbody>

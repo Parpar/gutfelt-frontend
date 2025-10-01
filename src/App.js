@@ -93,7 +93,7 @@ function AppContent() {
 }
 function App() {
   return (
-    <UserProvider>
+    <UserProvider >
       <AppContent />
     </UserProvider>
   );

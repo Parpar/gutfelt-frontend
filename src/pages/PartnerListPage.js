@@ -10,6 +10,7 @@ function PartnerListPage({ category, pageTitle, backLink }) {
       setIsLoading(true);
       try {
         const response = await fetch(`https://gutfelt-backend-staging.onrender.com/api/partners/${category}`);
+        if (!response.ok) throw new Error('Server response not ok');
         const data = await response.json();
         setPartners(data);
       } catch (error) {
